@@ -1,0 +1,80 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+html, body {
+    font-size: 2.5vh;
+}
+.content{
+    background: transparent;
+}
+.ion-page {
+    background: linear-gradient(map-get($colors , light-teal-blue), map-get($colors , teal-blue));
+}
+ion-content.content{
+    background-image: 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 30%, rgba(254, 245, 189, 0.08) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.08) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.05) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 30%, rgba(254, 245, 189, 0.05) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0) 18%, rgba(254, 245, 189, 0.05) 38%, transparent 80%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0) 28%, rgba(254, 245, 189, 0.05) 60%, transparent 90%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.08) 22%, transparent 30%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.05) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.05) 22%, transparent 30%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.03) 30%, rgba(254, 245, 189, 0.02) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.05) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.06) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.06) 22%, transparent 30%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 30%, rgba(254, 245, 189, 0.05) 32%, transparent 40%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: -180px 330px, -100px 250px, -130px 250px, -30px 200px, -60px 200px, 120px 70px, 50px 150px, -80px 130px, 50px 60px, 140px -90px, 50px 80px, 70px 20px, -40px 10px, 140px 160px;
+}
+.scroll-content, .fixed-content{
+    margin-top: 11.5vh !important;
+}
+ion-header.header::after {
+    background-image: none;
+}
+ion-header .back-btn{
+    background: transparent;
+    width: 44px;
+    height: 44px;
+    margin: 8px;
+    font-size: 24px;
+    color: #FFF;
+}
+button, a.button{
+    display: block;
+    padding: 16px;
+    color: #FFF;
+    width: 100%;
+    background: map-get($colors , yellow-orange );
+    font-size: 2.5vh;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0 auto;
+    font-family: "Roboto";
+    &.blue{
+        background: map-get($colors , teal-blue )
+    }
+}
+.help-text{
+    color: #FFF;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+}

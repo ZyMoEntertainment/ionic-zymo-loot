@@ -1,0 +1,50 @@
+<ion-header>
+  <div id="logo-type">
+    <span class="top">Zymo</span>
+    <span class="bottom">Interactive</span>
+  </div>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="info">
+      <div class="content circle">
+      </div>
+      <div class="gradient">
+        Earn a treasure chest<br/>every hour!
+      </div>
+    </ion-row>
+    <ion-row class="info">
+      <div text-right class="gradient">
+        Open the chest to<br/>receive a code!
+      </div>
+      <div class="content circle">
+      </div>
+    </ion-row>
+    <ion-row class="info">
+      <div class="content circle">
+      </div>
+      <div class="gradient">
+        Scan the code at the<br/>Zymo booth!
+      </div>
+    </ion-row>
+    <ion-row class="info">
+      <div text-right class="gradient">
+        Win awesome gear<br/>and prizes!
+      </div>
+      <div class="content circle">
+      </div>
+    </ion-row>
+    <ion-row id="navigation">
+      <ion-col text-center col-4>
+        <a><span class="small">Cool</span><br/>Stuff!</a>
+      </ion-col>
+      <ion-col text-center col-4>
+        <img [src]="treasureUrl" />
+        <a (click)="goToTreasure($event)">Treasure</a>
+      </ion-col>
+      <ion-col text-center col-4>
+        <a (click)="goToWhoIs($event)"><span class="small">Who is</span><br/>Zymo?</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

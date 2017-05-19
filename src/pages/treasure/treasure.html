@@ -1,0 +1,14 @@
+<ion-header>
+  <button (click)="goBack()" class="back-btn">
+    <ion-icon name="md-arrow-round-back"></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content>
+  <img class="chest-gif" [style.display]="isGIFHidden?'none':'inherit'" [src]="treasureChestGif" />
+  <div [style.display]="isQRHidden ? 'none':'inherit'">
+    <p class="help-text">Scan your code at the<br/>Zymo booth to win a prize!</p>
+    <qr-code [value]="qrCodeData" [size]="250"></qr-code>
+    <button>I redeemed this <ion-icon name="md-checkmark"></ion-icon></button>
+  </div>
+</ion-content>

@@ -1,0 +1,72 @@
+who-is-page {
+    &.ion-page{
+       background: transparent;
+    }
+    ion-content.content{
+        background: rgba(0,128,171,0.3);
+        .scroll-content{
+            background: #FFF;
+            margin: 16px !important;
+            margin-bottom: 20vh !important;
+            padding: 8px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .close-btn {
+                background: transparent;
+                width: 44px;
+                height: 44px;
+                font-size: 24px;
+                color: map-get($colors, teal-blue);
+                align-self: flex-end;
+                margin: 0;
+            }
+            .content.circle {
+                width: 16vh;
+                height: 16vh;
+                border-radius: 50%;
+                margin: 8px;
+                z-index: 2;
+                position: relative;
+                float: left;
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background: linear-gradient(map-get($colors, light-teal-blue), map-get($colors, teal-blue));
+                    position: absolute;
+                    z-index: 1;
+                }
+                &::after {
+                    content: '';
+                    width: calc(100% - 8px);
+                    height: calc(100% - 8px);
+                    border-radius: 50%;
+                    background: #FFF;
+                    position: absolute;
+                    z-index: 2;
+                    top: 4px;
+                    left: 4px;
+                }
+                &.dawn::after {
+                    background-image: url(../assets/images/dawn.png);
+                    background-size: 100%;
+                }
+                &.tyler::after {
+                    background-image: url(../assets/images/tyler.png);
+                    background-size: 100%;
+                }
+            }
+            .contact{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-family: "Roboto";
+                font-weight: 700;
+                font-size: 2.5vh;
+            }
+          }
+    }
+}
