@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { Device } from '@ionic-native/device';
 import { UUID } from 'angular2-uuid';
 
@@ -14,10 +14,12 @@ export class TreasurePage {
     qrCodeData: string;
     isGIFHidden: boolean;
     isQRHidden: boolean;
+    confirmOpen: boolean;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private device: Device) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, private device: Device) {
         this.isGIFHidden = false;
         this.isQRHidden = true;
+        this.confirmOpen = false;
     }
 
     goBack() {
@@ -25,7 +27,7 @@ export class TreasurePage {
     }
 
     restartGifAnimation = function () {
-        this.treasureChestGif = "../www/assets/images/chest.gif" + "?q=" + this.uuid;
+        this.treasureChestGif = "../assets/images/chest.gif" + "?q=" + this.uuid;
         this.hideGIF();
         this.showQR();
     }
@@ -46,10 +48,32 @@ export class TreasurePage {
         }.bind(this), 3500);
     }
 
+    resetTimer() {
+        this.events.publish("timerReset");
+    }
+
+    closeConfirm() {
+        this.confirmOpen = false;
+    }
+
+    openConfirm() {
+        this.confirmOpen = true;
+    }
+
+    confirm() {
+        this.closeConfirm();
+        this.resetTimer();
+        this.goHome();
+    }
+
     ionViewWillEnter() {
         this.uuid = UUID.UUID();
         this.setQRCode();
         this.restartGifAnimation();
+    }
+
+    goHome() {
+        this.navCtrl.pop();
     }
 
 }

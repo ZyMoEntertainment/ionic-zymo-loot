@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
-import {WhoIsPage} from '../whois/whois';
-import {TreasurePage} from '../treasure/treasure';
+import { NavController, ModalController, Events } from 'ionic-angular';
+import { WhoIsPage } from '../whois/whois';
+import { TreasurePage } from '../treasure/treasure';
+import { CoolStuffPage } from "../coolstuff/coolstuff";
+import { ViewChild } from '@angular/core';
+import { TimerComponent } from './timer';
+
 
 @Component({
   selector: 'page-home',
@@ -11,9 +15,21 @@ export class HomePage {
 
   treasureUrl: string;
   treasureAvailable: boolean;
+  @ViewChild(TimerComponent) timer: TimerComponent;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-    this.treasureUrl = "www/assets/images/no-chest.png";
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public events: Events) {
+    this.treasureUrl = "assets/images/no-chest.png";
+
+    events.subscribe('timerFinished', () => {
+      this.treasureAvailable = true;
+      this.treasureUrl = "assets/images/yes-chest.png";
+    })
+
+    events.subscribe('timerReset', () => {
+      this.treasureAvailable = false;
+      this.treasureUrl = "assets/images/no-chest.png";
+    })
+
   }
 
   goToWhoIs(event) {
@@ -26,5 +42,8 @@ export class HomePage {
     this.navCtrl.push(TreasurePage);
   }
 
+  goToCoolStuff(event) {
+    this.navCtrl.push(CoolStuffPage);
+  }
 
 }

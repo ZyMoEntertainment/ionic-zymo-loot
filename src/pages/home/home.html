@@ -36,11 +36,14 @@
     </ion-row>
     <ion-row id="navigation">
       <ion-col text-center col-4>
-        <a><span class="small">Cool</span><br/>Stuff!</a>
+        <a (click)="goToCoolStuff($event)"><span class="small">Cool</span><br/>Stuff!</a>
       </ion-col>
       <ion-col text-center col-4>
-        <img [src]="treasureUrl" />
-        <a (click)="goToTreasure($event)">Treasure</a>
+        <img [hidden]="treasureAvailable" [src]="treasureUrl" />
+        <timer [hidden]="treasureAvailable" #timer [timeInSeconds]="600"></timer>
+        <a class="chest" [hidden]="!treasureAvailable" (click)="goToTreasure($event)">
+          <img [src]="treasureUrl" />
+        </a>
       </ion-col>
       <ion-col text-center col-4>
         <a (click)="goToWhoIs($event)"><span class="small">Who is</span><br/>Zymo?</a>

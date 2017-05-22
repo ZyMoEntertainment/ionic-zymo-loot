@@ -8,14 +8,20 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WhoIsPage } from "../pages/whois/whois";
 import { TreasurePage } from "../pages/treasure/treasure";
+import { CoolStuffPage } from "../pages/coolstuff/coolstuff";
 import { QRCodeModule } from "angular2-qrcode/lib";
+import { TimerComponent } from '../pages/home/timer';
+import { HologramPage } from "../pages/hologram/hologram";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     WhoIsPage,
-    TreasurePage
+    TreasurePage,
+    CoolStuffPage,
+    HologramPage,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,9 @@ import { QRCodeModule } from "angular2-qrcode/lib";
     MyApp,
     HomePage,
     WhoIsPage,
-    TreasurePage
+    TreasurePage,
+    HologramPage,
+    CoolStuffPage
   ],
   providers: [
     StatusBar,

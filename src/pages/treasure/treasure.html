@@ -9,6 +9,10 @@
   <div [style.display]="isQRHidden ? 'none':'inherit'">
     <p class="help-text">Scan your code at the<br/>Zymo booth to win a prize!</p>
     <qr-code [value]="qrCodeData" [size]="250"></qr-code>
-    <button>I redeemed this <ion-icon name="md-checkmark"></ion-icon></button>
+    <button (click)="openConfirm()">I redeemed this <ion-icon name="md-checkmark"></ion-icon></button>
+    <div class="confirm" [hidden]="!confirmOpen">
+          <button class="yup" (click)="confirm()">Yup!</button>
+          <button class="nope" (click)="closeConfirm()">Nope!</button>
+    </div>
   </div>
 </ion-content>

@@ -71,6 +71,12 @@ page-home {
     position: fixed;
     bottom: 0;
     width: 100%;
+    .col {
+      height: 100%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
     a {
       font-family: "Arvil Sans";
       background: linear-gradient(map-get($colors, dark-cream), map-get($colors, yellow-orange));
@@ -83,10 +89,29 @@ page-home {
       .small {
           font-size: 4vh;
       }
+      &.timer-text{
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        -webkit-text-fill-color: map-get($colors , yellow-orange );
+        text-shadow: 0 0 2.5px rgba(0, 0, 0, 0.8);
+        font-size: 3.5vh;
+      }
+      &.chest{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        left: 0; 
+        bottom: 10px;
+      }
     }
     img {
       position: absolute;
       z-index: 1;
+      left: 0;
+      background: radial-gradient(ellipse at 50% 100% , rgba(255, 255, 255, 0.7) 0%, rgba(255,255,255,0) 67%);
     }
   }
 }

@@ -42,4 +42,22 @@ treasure-page {
     button{
         width: 42vh;
     }
+    .confirm {
+        width: 42vh;
+        margin: 0 auto;
+        button{
+            width: 21vh;
+            display: inline-block;
+            float: left;
+            margin:0;
+            &.yup{
+                background: map-get($colors , avocado-green);
+            }
+            &.nope{
+                background: map-get($colors , scarlet);
+            }
+        }
+    }
+    
+    
 }

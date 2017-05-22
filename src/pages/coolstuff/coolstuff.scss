@@ -1,0 +1,19 @@
+cool-stuff-page {
+    .prism {
+        position: fixed;
+        width: 69.85mm;
+        top: 50vh;
+        margin-top: -25vh;
+        left: 50vw;
+        margin-left: -34.925mm;
+    }
+    button.gram{
+        position: fixed;
+        width: 69.85mm;
+        top: calc(50vh + 69.85mm);
+        margin-top: -23vh;
+        left: 50vw;
+        margin-left: -34.925mm;
+        padding: 22px;
+    }
+}
