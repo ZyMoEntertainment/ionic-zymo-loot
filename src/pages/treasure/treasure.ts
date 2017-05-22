@@ -27,7 +27,7 @@ export class TreasurePage {
     }
 
     restartGifAnimation = function () {
-        this.treasureChestGif = "../assets/images/chest.gif" + "?q=" + this.uuid;
+        this.treasureChestGif = "assets/images/chest.gif" + "?q=" + this.uuid;
         this.hideGIF();
         this.showQR();
     }

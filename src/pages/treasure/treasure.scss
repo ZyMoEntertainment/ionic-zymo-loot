@@ -45,6 +45,10 @@ treasure-page {
     .confirm {
         width: 42vh;
         margin: 0 auto;
+        transition-property: all; 
+        transition-duration: 0.6s;
+        transform: rotateX(-90deg);
+        transform-origin: top; 
         button{
             width: 21vh;
             display: inline-block;
@@ -56,6 +60,9 @@ treasure-page {
             &.nope{
                 background: map-get($colors , scarlet);
             }
+        }
+        &.visible {
+            transform: rotateX(0deg); 
         }
     }
     

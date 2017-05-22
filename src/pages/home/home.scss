@@ -102,16 +102,58 @@ page-home {
         width: 100%;
         height: 100%;
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         left: 0; 
         bottom: 10px;
+        animation: tada 3s infinite;
       }
+    }
+    .glow {
+        position: absolute;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+        max-width: 130%;
+        left: -17%;
+    }
+    .inactive-chest{
+      opacity: 0.6;
     }
     img {
       position: absolute;
       z-index: 1;
       left: 0;
-      background: radial-gradient(ellipse at 50% 100% , rgba(255, 255, 255, 0.7) 0%, rgba(255,255,255,0) 67%);
+      // background: radial-gradient(ellipse at 50% 100% , rgba(255, 255, 255, 0.7) 0%, rgba(255,255,255,0) 67%);
+    }
+  }
+  @keyframes tada {
+    from {
+      transform: scale3d(1, 1, 1);
+    }
+
+    5%, 10% {
+      transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    15%, 25%, 35%, 45% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    20%, 30%, 40% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    45%, 100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes rotate{
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
     }
   }
 }

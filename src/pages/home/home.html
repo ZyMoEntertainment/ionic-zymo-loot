@@ -39,11 +39,12 @@
         <a (click)="goToCoolStuff($event)"><span class="small">Cool</span><br/>Stuff!</a>
       </ion-col>
       <ion-col text-center col-4>
-        <img [hidden]="treasureAvailable" [src]="treasureUrl" />
-        <timer [hidden]="treasureAvailable" #timer [timeInSeconds]="600"></timer>
+        <img class="inactive-chest" [hidden]="treasureAvailable" [src]="treasureUrl" />
+        <timer [hidden]="treasureAvailable" #timer [timeInSeconds]="60"></timer>
         <a class="chest" [hidden]="!treasureAvailable" (click)="goToTreasure($event)">
           <img [src]="treasureUrl" />
         </a>
+        <img [hidden]="!treasureAvailable" class="glow" src="assets/images/chest-glow.png" />
       </ion-col>
       <ion-col text-center col-4>
         <a (click)="goToWhoIs($event)"><span class="small">Who is</span><br/>Zymo?</a>
