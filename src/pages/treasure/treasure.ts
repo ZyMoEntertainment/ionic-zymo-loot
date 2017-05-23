@@ -71,7 +71,7 @@ export class TreasurePage {
     }
 
     closeConfirm = function () {
-        this.logEvent("select_content", {content_type:"close_confirm", item_id:"no_button"});
+        this.logEvent("select_content", {content_type:"close_confirm", item_id:"confirm_no_button"});
         this.confirmOpen = false;
     }
 
@@ -81,7 +81,7 @@ export class TreasurePage {
     }
 
     confirm = function () {
-        this.logEvent("select_content",{content_type: "treasure_claimed", item_id: "treasure_not_available"});
+        this.logEvent("select_content",{content_type: "treasure_claimed", item_id: "confirm_yes_button"});
         this.closeConfirm();
         this.resetTimer();
         this.goHome();
