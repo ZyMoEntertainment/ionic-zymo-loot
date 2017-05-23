@@ -12,6 +12,10 @@ import { CoolStuffPage } from "../pages/coolstuff/coolstuff";
 import { QRCodeModule } from "angular2-qrcode/lib";
 import { TimerComponent } from '../pages/home/timer';
 import { HologramPage } from "../pages/hologram/hologram";
+import { LocalNotifications } from "@ionic-native/local-notifications";
+import { AppVersion } from "@ionic-native/app-version";
+import { Device } from "@ionic-native/device";
+import { Firebase } from "@ionic-native/firebase";
 
 @NgModule({
   declarations: [
@@ -35,11 +39,15 @@ import { HologramPage } from "../pages/hologram/hologram";
     WhoIsPage,
     TreasurePage,
     HologramPage,
-    CoolStuffPage
+    CoolStuffPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
+    AppVersion,
+    Device,
+    Firebase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

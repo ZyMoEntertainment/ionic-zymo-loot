@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ITimer } from './itimer';
 import { Events, Platform } from "ionic-angular";
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @Component({
@@ -13,13 +14,14 @@ export class TimerComponent {
     public timer: ITimer;
     public runningTimer: any;
 
-    constructor(public platform: Platform, public events: Events) {
+    constructor(public platform: Platform, public events: Events, private localNotifications: LocalNotifications) {
         events.subscribe('resumeTimer', () => {
             this.initTimer();
         })
 
         events.subscribe('timerReset', () => {
             localStorage.setItem("timer", this.timeInSeconds.toString());
+            this.schedulePush();
             this.initTimer();
         })
 
@@ -31,6 +33,7 @@ export class TimerComponent {
     }
 
     ngOnInit() {
+        this.schedulePush();
         this.initTimer();
     }
 
@@ -44,7 +47,7 @@ export class TimerComponent {
         }
 
         var timeRemaining = parseInt(localStorage.getItem("timer"));
-        
+
         this.timer = <ITimer>{
             seconds: this.timeInSeconds,
             runTimer: false,
@@ -53,24 +56,22 @@ export class TimerComponent {
             secondsRemaining: this.timeInSeconds
         };
 
-        if (timeRemaining) {
-            if (timeRemaining > 0) {
-                var currentSeconds = new Date().getTime() / 1000;
-                var pausedTime = parseInt(localStorage.getItem("appPausedTime"));
-                if(pausedTime > 0) {
-                    timeRemaining = (timeRemaining - (currentSeconds - pausedTime));
-                }
-                this.timer.seconds = timeRemaining;
-                this.timer.secondsRemaining = timeRemaining;
-                this.timer.runTimer = true;
-            } else {
-                this.timer.seconds = 0;
-                this.timer.secondsRemaining = 0;
-                this.timer.hasFinished = true;
-            }
-            this.timer.hasStarted = true;
-        }
 
+        var currentSeconds = new Date().getTime() / 1000;
+        var pausedTime = parseInt(localStorage.getItem("appPausedTime"));
+        if (pausedTime > 0) {
+            timeRemaining = (timeRemaining - (currentSeconds - pausedTime));
+            localStorage.removeItem("appPausedTime");
+        }
+        if (timeRemaining > 0) {
+            this.timer.seconds = timeRemaining;
+            this.timer.secondsRemaining = timeRemaining;
+            this.timer.runTimer = true;
+        } else {
+            this.timer.seconds = 0;
+            this.timer.secondsRemaining = 0;
+            this.timer.hasFinished = true;
+        }
         this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
         this.startTimer();
     }
@@ -118,7 +119,19 @@ export class TimerComponent {
         hoursString = (hours < 10) ? "0" + hours : hours.toString();
         minutesString = (minutes < 10) ? "0" + minutes : minutes.toString();
         secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
+        if(inputSeconds == 0) {
+            return "";
+        }
         return hoursString + ':' + minutesString + ':' + secondsString;
+    }
+
+    schedulePush() {
+        this.localNotifications.schedule({
+            text: 'You have loot to open from Zymo!',
+            at: new Date(new Date().getTime() + (this.timeInSeconds * 1000)),
+            led: 'FF0000',
+            sound: null
+        });
     }
 
 }

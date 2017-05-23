@@ -11,7 +11,7 @@
         <p>Account Manager</p>
       </div>
     </div>
-    <a class="button" href="mailto:dawn.gut@zymo.io?Subject=Questions/Comments">Email</a>
+    <a (click)="logEvent('select_content', {content_type:'email_zymo', item_id:'email_dawn_button'})" class="button" href="mailto:dawn.gut@zymo.io?Subject=Questions/Comments">Email</a>
   </div>
   <div>
     <div class="contact">
@@ -22,7 +22,7 @@
         <p>Solutions Architect</p>
       </div>
     </div>
-    <a class="button" href="mailto:tyler.hoffman@zymo.io?Subject=Questions/Comments">Email</a>
+    <a (click)="logEvent('select_content', {content_type:'email_zymo', item_id:'email_tyler_button'})" class="button" href="mailto:tyler.hoffman@zymo.io?Subject=Questions/Comments">Email</a>
   </div>
-  <a class="button blue" href="http://www.zymo.io">Visit Zymo.io</a>
+  <a (click)="logEvent('select_content', {content_type:'view_website', item_id:'visit_button'})" class="button blue" href="http://www.zymo.io?utm_source=zymo&utm_medium=app&utm_campaign=conference-app&utm_content=who_is_zymo&utm_term=visit_website">Visit Zymo.io</a>
 </ion-content>

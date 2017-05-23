@@ -1,16 +1,16 @@
 hologram-page{
-.scroll-content, .fixed-content {
-margin: 0 !important;
-}
-img{
-    position: fixed;
-    width: 69.85mm;
-    top: 50vh;
-    margin-top: -25vh;
-    left: 50vw;
-    margin-left: -34.925mm;
-}
-* {
-background: #000;
-}
+    .scroll-content, .fixed-content {
+       margin: 0 !important;
+    }
+    img{
+        position: fixed;
+        width: 69.85mm;
+        top: 50vh;
+        margin-top: -25vh;
+        left: 50vw;
+        margin-left: -34.925mm;
+    }
+    * {
+        background: #000;
+    }
 }
