@@ -9,7 +9,7 @@ import { Firebase } from "@ionic-native/firebase";
 })
 export class CoolStuffPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebase: Firebase) {
-      this.firebase.setScreenName("hologram_view")
+      this.firebase.setScreenName("hologram_setup")
   }
 
   goBack() {

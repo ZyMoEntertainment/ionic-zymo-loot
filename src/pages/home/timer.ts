@@ -46,6 +46,11 @@ export class TimerComponent {
             this.timeInSeconds = 0;
         }
 
+        if(localStorage.getItem("firstStart") == "true") { //detect first start and then set timer to 0 to trigger a treasure chest
+            localStorage.setItem("timer", "0");
+            localStorage.setItem("firstStart", "false");
+        }
+
         var timeRemaining = parseInt(localStorage.getItem("timer"));
 
         this.timer = <ITimer>{
@@ -56,9 +61,9 @@ export class TimerComponent {
             secondsRemaining: this.timeInSeconds
         };
 
-
         var currentSeconds = new Date().getTime() / 1000;
         var pausedTime = parseInt(localStorage.getItem("appPausedTime"));
+
         if (pausedTime > 0) {
             timeRemaining = (timeRemaining - (currentSeconds - pausedTime));
             localStorage.removeItem("appPausedTime");

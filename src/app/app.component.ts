@@ -73,6 +73,10 @@ export class MyApp {
         console.log('[INFO] App resumed');
       });
 
+      if(localStorage.getItem("firstStart") === null) {
+         localStorage.setItem("firstStart", "true");
+      }
+
       statusBar.styleDefault();
 
       setTimeout(() => {
