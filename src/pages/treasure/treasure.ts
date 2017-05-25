@@ -47,9 +47,11 @@ export class TreasurePage {
     setQRCode = function () {
         if(!this.treasureAvailable) {
             this.uuid = UUID.UUID();
+            this.qrCodeData = "zymo-" + this.device.platform + "-" + this.device.version + "-" + this.device.manufacturer + "-" + this.device.model + "-" + this.uuid;
+            localStorage.setItem("qrCode", this.qrCodeData);
+        } else {
+            this.qrCodeData = localStorage.getItem("qrCode");
         }
-        this.qrCodeData = "zymo-" + this.device.platform + "-" + this.device.version + "-" + this.device.manufacturer + "-" + this.device.model + "-" + this.uuid;
-        localStorage.setItem("qrCode", this.qrCodeData);
     }
 
     hideGIF = function () {
