@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+import { Platform, Events, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
@@ -22,7 +22,8 @@ export class MyApp {
     splashScreen: SplashScreen,
     public events: Events,
     private appVersion: AppVersion,
-    private device: Device
+    private device: Device,
+    private app: App,
   ) {
     platform.ready().then(() => {
       var self = this;
@@ -83,6 +84,8 @@ export class MyApp {
         splashScreen.hide();
       }, 100);
 
+      this.app._setDisableScroll(false);
+      
     });
   }
 }

@@ -19,6 +19,7 @@ html, body {
 }
 .content{
     background: transparent;
+    overflow: hidden;
 }
 .ion-page {
     background: linear-gradient(map-get($colors , light-teal-blue), map-get($colors , teal-blue));

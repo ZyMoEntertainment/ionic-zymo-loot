@@ -82,7 +82,7 @@ export class TreasurePage {
 
     confirm = function () {
         this.logEvent("select_content",{content_type: "treasure_claimed", item_id: "confirm_yes_button"});
-        this.closeConfirm();
+        this.confirmOpen = false;
         this.resetTimer();
         this.goHome();
     }
