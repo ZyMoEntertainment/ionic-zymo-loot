@@ -67,6 +67,7 @@ export class TreasurePage {
 
     resetTimer = function () {
         localStorage.setItem("treasureAvailable", "false");
+        localStorage.setItem("firstStart", "false");
         this.events.publish("timerReset");
     }
 
