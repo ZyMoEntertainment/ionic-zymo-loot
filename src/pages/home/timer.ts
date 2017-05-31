@@ -46,7 +46,7 @@ export class TimerComponent {
             this.timeInSeconds = 0;
         }
 
-        if(localStorage.getItem("firstStart") == "true") { //detect first start and then set timer to 0 to trigger a treasure chest
+        if (localStorage.getItem("firstStart") == "true") { //detect first start and then set timer to 0 to trigger a treasure chest
             localStorage.setItem("timer", "0");
             localStorage.setItem("firstStart", "false");
         }
@@ -61,13 +61,22 @@ export class TimerComponent {
             secondsRemaining: this.timeInSeconds
         };
 
-        var currentSeconds = new Date().getTime() / 1000;
-        var pausedTime = parseInt(localStorage.getItem("appPausedTime"));
+        // var currentSeconds = new Date().getTime() / 1000;
+        // var pausedTime = parseInt(localStorage.getItem("appPausedTime"));
 
-        if (pausedTime > 0) {
-            timeRemaining = (timeRemaining - (currentSeconds - pausedTime));
-            localStorage.removeItem("appPausedTime");
+        // if (pausedTime > 0) {
+        //     timeRemaining = (timeRemaining - (currentSeconds - pausedTime));
+        //     localStorage.removeItem("appPausedTime");
+        // }
+
+        if (localStorage.getItem("appTimerStart") == "null") {
+            localStorage.setItem("appTimerStart", (new Date().getTime() / 1000).toString());
+        } else {
+            var currentSeconds = new Date().getTime() / 1000;
+            var appStart = parseInt(localStorage.getItem("appTimerStart"));        
+            timeRemaining = (this.timeInSeconds - (currentSeconds - appStart));
         }
+
         if (timeRemaining > 0) {
             this.timer.seconds = timeRemaining;
             this.timer.secondsRemaining = timeRemaining;
@@ -77,6 +86,7 @@ export class TimerComponent {
             this.timer.secondsRemaining = 0;
             this.timer.hasFinished = true;
         }
+
         this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
         this.startTimer();
     }
@@ -109,6 +119,7 @@ export class TimerComponent {
                 localStorage.setItem("timer", "0");
                 this.timer.hasFinished = true;
                 this.events.publish("timerFinished");
+                localStorage.setItem("appTimerStart", null);
             }
         }, 1000);
     }
@@ -124,7 +135,7 @@ export class TimerComponent {
         hoursString = (hours < 10) ? "0" + hours : hours.toString();
         minutesString = (minutes < 10) ? "0" + minutes : minutes.toString();
         secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
-        if(inputSeconds == 0) {
+        if (inputSeconds == 0) {
             return "";
         }
         return hoursString + ':' + minutesString + ':' + secondsString;
