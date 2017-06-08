@@ -44,7 +44,7 @@
       </ion-col>
       <ion-col text-center col-4>
         <img class="inactive-chest" [hidden]="treasureAvailable" [src]="treasureUrl" />
-        <timer [hidden]="treasureAvailable" #timer [timeInSeconds]="3600"></timer>
+        <timer [hidden]="treasureAvailable" #timer [timeInSeconds]="30"></timer>
         <a class="chest" [hidden]="!treasureAvailable" (click)="goToTreasure($event)">
           <img [src]="treasureUrl" />
         </a>
