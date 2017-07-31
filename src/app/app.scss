@@ -21,7 +21,7 @@ html, body {
     background: transparent;
     overflow: hidden;
 }
-.ion-page {
+ion-nav {
     background: linear-gradient(map-get($colors , light-teal-blue), map-get($colors , teal-blue));
 }
 ion-content.content{
@@ -43,6 +43,55 @@ ion-content.content{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: -180px 330px, -100px 250px, -130px 250px, -30px 200px, -60px 200px, 120px 70px, 50px 150px, -80px 130px, 50px 60px, 140px -90px, 50px 80px, 70px 20px, -40px 10px, 140px 160px;
+}
+.ion-page{
+
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: -180px 330px, -100px 250px, -130px 250px, -30px 200px, -60px 200px, 120px 70px, 50px 150px, -80px 130px, 50px 60px, 140px -90px, 50px 80px, 70px 20px, -40px 10px, 140px 160px;   
+    }
+    50% {
+        background-position: -160px 310px, -80px 230px, -110px 230px, -10px 180px, -40px 180px, 100px 50px, 30px 130px, -60px 110px, 30px 40px, 120px -70px, 30px 60px, 50px 0px, -20px -10px, 120px 140px;
+    }
+    100% {
+        background-position: -180px 330px, -100px 250px, -130px 250px, -30px 200px, -60px 200px, 120px 70px, 50px 150px, -80px 130px, 50px 60px, 140px -90px, 50px 80px, 70px 20px, -40px 10px, 140px 160px;
+    }
+}
+
+.ios .ion-page.show-page ~ .nav-decor{
+    background: transparent;
+    background-image: 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 30%, rgba(254, 245, 189, 0.08) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.08) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.05) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 30%, rgba(254, 245, 189, 0.05) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0) 18%, rgba(254, 245, 189, 0.05) 38%, transparent 80%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0) 28%, rgba(254, 245, 189, 0.05) 60%, transparent 90%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.08) 22%, transparent 30%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.05) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.05) 22%, transparent 30%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.03) 30%, rgba(254, 245, 189, 0.02) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.05) 32%, transparent 40%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 10%, rgba(254, 245, 189, 0.06) 12%, transparent 20%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 20%, rgba(254, 245, 189, 0.06) 22%, transparent 30%), 
+    -webkit-radial-gradient(circle contain, rgba(255, 255, 255, 0.08) 30%, rgba(254, 245, 189, 0.05) 32%, transparent 40%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: -180px 330px, -100px 250px, -130px 250px, -30px 200px, -60px 200px, 120px 70px, 50px 150px, -80px 130px, 50px 60px, 140px -90px, 50px 80px, 70px 20px, -40px 10px, 140px 160px;
+    animation: fade 6s infinite, move 11s infinite;
 }
 .scroll-content, .fixed-content{
     margin-top: 11.5vh !important;

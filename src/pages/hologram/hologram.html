@@ -5,5 +5,13 @@
 </ion-header>
 
 <ion-content no-bounce>
-    <img class="prism" src="assets/images/hologram_360.gif" />
+  <img class="prism" [ngClass]="{fadeOut: animateHolo == true}" [src]=hologramUrl />
+  <div class="navigation">
+    <button class="prev" (click)=prevHolo()>
+      prev
+    </button>
+    <button class="next" (click)=nextHolo()>
+      next
+    </button>
+  </div>
 </ion-content>
