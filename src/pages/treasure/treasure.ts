@@ -20,7 +20,10 @@ export class TreasurePage {
     showAnimation: boolean;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, private device: Device, private firebase: Firebase) {
-        this.showAnimation = (localStorage.getItem("showAnimation") == 'true');
+        this.showAnimation = false;
+        if(localStorage.getItem("showAnimation") == 'true' || localStorage.getItem("showAnimation") == null){
+            this.showAnimation = true;
+        }
         if(this.showAnimation) {
             this.isGIFHidden = false;
             this.isQRHidden = true;
@@ -49,14 +52,14 @@ export class TreasurePage {
     }
 
     setQRCode = function () {
-        if(this.showAnimation) {
+        if(this.showAnimation || localStorage.getItem("qrCode") == null) {
             this.uuid = UUID.UUID();
             this.qrCodeData = "zymo-" + this.device.platform + "-" + this.device.version + "-" + this.device.manufacturer + "-" + this.device.model + "-" + this.uuid;
-            localStorage.setItem("qrCode", this.qrCodeData);
+            localStorage.setItem("qrCode", this.qrCodeData.toLowerCase().replace(" ","-"));
             localStorage.setItem("showAnimation", "false");
             this.showAnimation = false;
         } else {
-            this.qrCodeData = localStorage.getItem("qrCode");
+            this.qrCodeData = localStorage.getItem("qrCode").toLowerCase().replace(" ","-");
         }
     }
 

@@ -151,7 +151,8 @@ export class TimerComponent {
         this.localNotifications.schedule({
             text: 'You have loot to open from Zymo!',
             at: new Date(new Date().getTime() + (this.timeInSeconds * 1000)),
-            led: 'FF0000',
+            led: 'fed206',
+            icon: 'assets/images/yes-chest.png',
             sound: null
         });
     }

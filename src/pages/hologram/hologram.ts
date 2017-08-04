@@ -15,8 +15,22 @@ export class HologramPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebase: Firebase) {
       this.firebase.setScreenName("hologram_view");
       this.animateHolo = false;
-      this.urls = ["assets/images/hologram_360.gif", "assets/images/jelly.gif"];
-      let random_num: number = (Math.round(Math.random()))
+      this.urls = ["assets/images/gif/hologram_360.gif",
+                  "assets/images/gif/gilaMonster.gif",
+                  "assets/images/gif/jlo.gif",
+                  "assets/images/gif/jordan.gif",
+                  "assets/images/gif/lacrosse.gif",
+                  "assets/images/gif/logitech.gif",
+                  "assets/images/gif/owl.gif",
+                  "assets/images/gif/penguin.gif",
+                  "assets/images/gif/ring.gif",
+                  "assets/images/gif/scarygirl.gif",
+                  "assets/images/gif/ship.gif",
+                  "assets/images/gif/tesla.gif",
+                  "assets/images/gif/turret.gif",
+                  "assets/images/gif/yeti.gif",
+                  "assets/images/gif/zombie.gif",];
+      let random_num: number = (Math.round(Math.random() * 15) )
       this.currentHologramIdx = random_num;
       this.assignUrl(this.currentHologramIdx);
   }
@@ -57,9 +71,12 @@ export class HologramPage {
   animateHologram() {
     this.animateHolo = true;
     setTimeout(() => {
-      this.assignUrl(this.currentHologramIdx);
+       this.assignUrl(this.currentHologramIdx);
+    }, 650
+    );
+    setTimeout(() => {
       this.animateHolo = false;
-    }, 700
+    }, 800
     );
   }
 
