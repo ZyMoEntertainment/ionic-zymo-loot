@@ -10,8 +10,40 @@ hologram-page{
         left: 50vw;
         margin-left: -34.925mm;
         transform: scale(1.2, 1.2);
+        transition: opacity 0.6s;
+        opacity: 1;
+        &.fadeOut {
+            opacity: 0;
+        }
     }
     * {
         background: #000;
+    }
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left:0;
+        height: 15vh;
+        width: 100%;
+        button {
+            color: rgba(255, 255, 255, 0.4);
+            width: 25vh;
+            height: 100%;
+            position: absolute;
+            transition: all 0.2s;
+            padding: 30px 30px 0px;
+            text-transform: uppercase;
+            &.prev {
+                left: 0;
+                text-align: left;
+            }
+            &.next {
+                right: 0;
+                text-align: right;
+            }
+            &.activated {
+                color: rgba(255,255,255,1);
+            }
+        }
     }
 }

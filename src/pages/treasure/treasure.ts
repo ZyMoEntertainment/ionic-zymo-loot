@@ -17,10 +17,14 @@ export class TreasurePage {
     isQRHidden: boolean;
     confirmOpen: boolean;
     treasureAvailable: boolean;
+    showAnimation: boolean;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, private device: Device, private firebase: Firebase) {
-        this.treasureAvailable = (localStorage.getItem("treasureAvailable") == 'true');
-        if(!this.treasureAvailable) {
+        this.showAnimation = false;
+        if(localStorage.getItem("showAnimation") == 'true' || localStorage.getItem("showAnimation") == null){
+            this.showAnimation = true;
+        }
+        if(this.showAnimation) {
             this.isGIFHidden = false;
             this.isQRHidden = true;
         } else {
@@ -28,6 +32,10 @@ export class TreasurePage {
             this.isQRHidden = false;
         }
         this.confirmOpen = false;
+
+        events.subscribe('timerFinished', () => {
+            localStorage.setItem("showAnimation", "true");
+        })
 
         this.firebase.setScreenName("claim_treasure")
     }
@@ -41,16 +49,17 @@ export class TreasurePage {
         this.treasureChestGif = "assets/images/chest.gif" + "?q=" + this.uuid;
         this.hideGIF();
         this.showQR();
-        localStorage.setItem("treasureAvailable", "true");
     }
 
     setQRCode = function () {
-        if(!this.treasureAvailable) {
+        if(this.showAnimation || localStorage.getItem("qrCode") == null) {
             this.uuid = UUID.UUID();
             this.qrCodeData = "zymo-" + this.device.platform + "-" + this.device.version + "-" + this.device.manufacturer + "-" + this.device.model + "-" + this.uuid;
-            localStorage.setItem("qrCode", this.qrCodeData);
+            localStorage.setItem("qrCode", this.qrCodeData.toLowerCase().replace(" ","-"));
+            localStorage.setItem("showAnimation", "false");
+            this.showAnimation = false;
         } else {
-            this.qrCodeData = localStorage.getItem("qrCode");
+            this.qrCodeData = localStorage.getItem("qrCode").toLowerCase().replace(" ","-");
         }
     }
 
@@ -67,10 +76,13 @@ export class TreasurePage {
         this.logEvent("present_offer", {item_id:this.uuid, item_name: this.qrCodeData, item_category: "qr_code", quantity: 1});
     }
 
-    resetTimer = function () {
+    // resetTimer = function () {
+    //     this.events.publish("timerReset");
+    // }
+
+    treasureClaimed = function() {
         localStorage.setItem("treasureAvailable", "false");
         localStorage.setItem("firstStart", "false");
-        this.events.publish("timerReset");
     }
 
     closeConfirm = function () {
@@ -86,16 +98,17 @@ export class TreasurePage {
     confirm = function () {
         this.logEvent("select_content",{content_type: "treasure_claimed", item_id: "confirm_yes_button"});
         this.confirmOpen = false;
-        this.resetTimer();
+        this.treasureClaimed();
+        // this.resetTimer();
         this.goHome();
     }
 
     ionViewWillEnter = function () {
-        this.treasureAvailable = (localStorage.getItem("treasureAvailable") == 'true');
-        this.setQRCode();
-        if(!this.treasureAvailable) {
+        // this.showAnimation = (localStorage.getItem("showAnimation") == 'true');
+        if(this.showAnimation) {
             this.restartGifAnimation();
         }
+        this.setQRCode();
     }
 
     goHome = function () {
